@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdlib>
+#include <array>
+#include <bitset>
+#include <windows.h>
+using namespace std;
+
+void print16(void *p)
+{
+    cout<<"без знака 16:"<<std::hex<<*(reinterpret_cast<unsigned short*>(p))<<endl;
+   cout<<"без знака 2:"<< std::bitset<8>{*(reinterpret_cast<unsigned short*>(p))}<<endl;
+   cout<<"без знака 10:"<< std::dec<<*(reinterpret_cast<unsigned short*>(p))<<endl;
+   cout<<"со знаком 16:"<<std::hex<< *(reinterpret_cast<short*>(p))<<endl;
+   cout<<"со знаком 2:"<< std::bitset<8>{*(reinterpret_cast<short*>(p))}<<endl;
+   cout<<"со знаком 10:"<< std::dec<< *(reinterpret_cast<short*>(p))<<endl;
+}
+
+int main()
+{
+   SetConsoleCP(1251);
+   SetConsoleOutputCP(1251);
+   //Минимальное целое 16-битное значение без знака
+   unsigned short min16 = 0;
+   //Максимальное целое 16-битное значение без знака
+   unsigned short max16 = 65535;
+   //Минимальное целое 16-битное значение со знаком
+   short min_sign = -32768;
+   //Максимальное целое 16-битное значение со знаком
+   short max_sign = 32767;
+   short y = 6;
+   short z = -3;
+   cout<<min16<<endl;
+   print16(&min16);
+   cout<<max16<<endl;
+   print16(&max16);
+   cout<<min_sign<<endl;
+   print16(&min_sign);
+   cout<<max_sign<<endl;
+   print16(&max_sign);
+   cout<<y<<endl;
+   print16(&y);
+   cout<<z<<endl;
+   print16(&z);
+   return 0;
+}

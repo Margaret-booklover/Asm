@@ -1,0 +1,19 @@
+.data
+pf: .asciz "%f\n"
+sf:  .asciz "%l"
+.text
+.globl foo
+foo:
+    xor  %eax, %eax
+    push %rax
+    mov  %rsp, %rsi
+    lea  sf(%rip), %rdi
+    call scanf
+    movsd (%rsp), %xmm0
+    mov   $1, %eax
+    lea   pf(%rip), %rdi
+    pop   %rdx
+    jmp  printf
+
+
+

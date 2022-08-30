@@ -1,0 +1,25 @@
+
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <stdio.h>
+using namespace std;
+
+int main(void)
+{
+        int foo = 10, bar = 15;
+        __asm__ __volatile__("addl  %%ebx,%%eax"
+                             :"=a"(foo)
+                             :"a"(foo), "b"(bar)
+                             );
+        printf("foo+bar=%d\n", foo);
+        return 0;
+}
+
+"xor %%edx, %%edx\n"
+"div %[divisor]\n"
+: "=a"(z), "=&d"(w)
+: "a"(x), [divisor]"r"(y)
+: "cc"
